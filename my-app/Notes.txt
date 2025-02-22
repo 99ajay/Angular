@@ -1,0 +1,34 @@
+Angular tutorial :==
+
+//How to install the Angular CLI --
+1. npm install -g @angular/cli
+
+2. ng new my-app
+
+3. cd my-app
+
+4. ng serve
+
+
+
+
+//Be carefull
+// If I am using the Angular 14+
+// my file is inside the MyComponents/todos/todos.component.html now how to import this ?
+
+Since your TodosComponent is inside MyComponents/todos/todos.component.ts, you need to correctly import it in app.component.ts.
+
+Like :--
+
+import { Component } from '@angular/core';
+import { RouterOutlet } from '@angular/router';
+import { TodosComponent } from './MyComponents/todos/todos.component'; // Correct import path
+
+@Component({
+  selector: 'app-root',
+  standalone: true,
+  imports: [RouterOutlet, TodosComponent], // Add TodosComponent here
+  templateUrl: './app.component.html',
+  styleUrl: './app.component.css'
+})
+export class AppComponent { }
